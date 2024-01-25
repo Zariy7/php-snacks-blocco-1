@@ -1,3 +1,20 @@
+<?php
+    $allChat = [];
+    
+    for($i = 1; $i<4; $i++){
+        $dayKey = rand(1, 31).' - '.rand(1, 12).' - '.rand(2012, 2024);
+        $oneChat = [];
+
+        $oneChat['title'] = 'title #'.$i;
+        $oneChat['author'] = 'author #'.$i;
+        $oneChat['text'] = 'text #'.$i;
+        
+        $allChat[$dayKey] = $oneChat;
+    }
+    
+    //var_dump($allChat);
+?>
+
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -7,6 +24,25 @@
         <title>Document</title>
     </head>
     <body>
-        
+        <div class="container">
+            <?php 
+                foreach($allChat as $key => $chat) {
+                    echo $key.'<br>'; 
+            ?>
+            <ul class="list-group">
+                    <?php 
+                        foreach($chat as $info){  
+                    ?>
+                            <li class="list-group-item">
+                                <?php echo $info; ?>
+                            </li>
+                    <?php 
+                        }
+                    ?>
+                <?php 
+                    }
+                ?>
+            </ul>
+        </div>
     </body>
 </html>
