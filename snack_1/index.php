@@ -5,12 +5,12 @@
     for($i = 1; $i<6; $i++){
         $match = [];
 
-        $match['home'] = $teams[rand(0, count($teams))];
+        $match['home'] = $teams[rand(0, count($teams)-1)];
         unset($teams[array_search($match['home'], $teams)]);
         array_values($teams);
         sort($teams);
 
-        $match['away'] = $teams[rand(0, count($teams))];
+        $match['away'] = $teams[rand(0, count($teams)-1)];
         unset($teams[array_search($match['away'], $teams)]);
         array_values($teams);
         sort($teams);
