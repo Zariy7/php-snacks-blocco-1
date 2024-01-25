@@ -3,14 +3,20 @@
     
     for($i = 1; $i<4; $i++){
         $dayKey = rand(1, 31).' - '.rand(1, 12).' - '.rand(2012, 2024);
-        $oneChat = [];
 
-        $oneChat['title'] = 'title #'.$i;
-        $oneChat['author'] = 'author #'.$i;
-        $oneChat['text'] = 'text #'.$i;
-        
-        //$dayKey[] = $oneChat;
-        $allChat[$dayKey] = $oneChat;
+        $dayChat = [];
+
+        for($j = 1; $j<=(rand(1, 3)); $j++){
+            $oneChat = [];
+
+            $oneChat['title'] = 'title #'.$j;
+            $oneChat['author'] = 'author #'.$j;
+            $oneChat['text'] = 'text #'.$j;
+
+            $dayChat[] = $oneChat;
+        }
+
+        $allChat[$dayKey] = $dayChat;
     }
     
     //var_dump($allChat);
@@ -27,23 +33,19 @@
     <body>
         <div class="container">
             <?php 
-                foreach($allChat as $key => $chat) {
-                    echo $key.'<br>'; 
-            ?>
-            <ul class="list-group">
-                    <?php 
-                        foreach($chat as $info){  
-                    ?>
-                            <li class="list-group-item">
-                                <?php echo $info; ?>
-                            </li>
-                    <?php 
+                foreach($allChat as $key => $firstOutput){
+                    echo "<ul class='list-group my-3'><li class='list-group-item'><h3>".$key."</h3></li>";
+
+                    //var_dump($firstOutput);
+                    foreach($firstOutput as $secondOutput){
+                        foreach($secondOutput as $thirdOutput){
+                            echo "<li class='list-group-item'>".$thirdOutput."</li>";
                         }
-                    ?>
-                <?php 
                     }
-                ?>
-            </ul>
+
+                    echo "</ul>";
+                }
+            ?>
         </div>
     </body>
 </html>
