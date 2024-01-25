@@ -9,6 +9,7 @@
         $oneChat['author'] = 'author #'.$i;
         $oneChat['text'] = 'text #'.$i;
         
+        $dayKey[] = $oneChat;
         $allChat[$dayKey] = $oneChat;
     }
     
