@@ -1,3 +1,27 @@
+<?php 
+    $matches = [];
+    $teams = ['Milano', 'Bologna', 'Treviso', 'Reggio Emilia', 'Napoli', 'Torino', 'Genova', 'Venezia', 'Sassari', 'Tortona'];
+    
+    for($i = 1; $i<6; $i++){
+        $match = [];
+
+        $match['home'] = $teams[rand(0, count($teams))];
+        unset($teams[array_search($match['home'], $teams)]);
+        sort($teams);
+
+        $match['away'] = $teams[rand(0, count($teams))];
+        unset($teams[array_search($match['away'], $teams)]);
+        sort($teams);
+
+        $match['home-points'] = rand(30, 80);
+        $match['away-points'] = rand(30, 80);
+
+        $matches[] = $match;
+    }
+
+    //var_dump($matches);
+?>
+
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -7,6 +31,14 @@
         <title>Document</title>
     </head>
     <body>
-        
+        <ul>
+            <?php foreach($matches as $match){?>
+                <li>
+                    <?php
+                        echo $match['home']." - ".$match['away']." | ".$match['home-points']." - ".$match['away-points']
+                    ?>
+                </li>
+            <?php } ?>
+        </ul>
     </body>
 </html>
